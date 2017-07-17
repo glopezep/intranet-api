@@ -1,0 +1,24 @@
+{
+  "name": "intranet-api",
+  "version": "0.0.1",
+  "description": "Pawa Intranet API",
+  "main": "index.js",
+  "author": "Pawa Dominicana",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^0.21.0",
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "test-listen": "^1.0.2"
+  },
+  "dependencies": {
+    "micro": "^7.3.3",
+    "microrouter": "^2.1.1"
+  }
+}
