@@ -6,7 +6,8 @@
   "author": "Pawa Dominicana",
   "license": "ISC",
   "scripts": {
-    "test": "NODE_ENV=test ava ./test/*-test.js"
+    "lint": "eslint ./**/*.js",
+    "test": "yarn lint || npm run lint && NODE_ENV=test ava ./test/*-test.js"
   },
   "devDependencies": {
     "ava": "^0.21.0",
