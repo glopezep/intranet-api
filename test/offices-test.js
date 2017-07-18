@@ -60,3 +60,20 @@ test('GET /list', async t => {
   t.is(response.statusCode, 200)
   t.deepEqual(response.body, offices)
 })
+
+test('DELETE /:id', async t => {
+  const office = fixtures.getOffice()
+  const url = t.context.url
+
+  const options = {
+    method: 'DELETE',
+    uri: `${url}/${office.id}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, office)
+})

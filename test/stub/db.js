@@ -14,11 +14,15 @@ class IntranetDB {
   }
 
   async getOffice (id) {
-    return fixtures.getOffice()
+    return Promise.resolve(fixtures.getOffice())
   }
 
   async getOffices () {
-    return fixtures.getOffices()
+    return Promise.resolve(fixtures.getOffices())
+  }
+
+  async deleteOffice (id) {
+    return Promise.resolve(fixtures.getOffice())
   }
 }
 
