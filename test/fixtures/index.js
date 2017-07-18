@@ -1,12 +1,11 @@
 const uuid = require('uuid/v4')
 
 function getProject () {
-  const id = uuid()
   return {
-    id,
-    name: `Lorem ${id}`,
+    id: '8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
+    name: 'Lorem 8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing',
-    imageURL: `http://intranet.test/uploads/${id}`,
+    imageURL: 'http://intranet.test/uploads/8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
     extURL: 'http://extlink.test/'
   }
 }
