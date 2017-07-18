@@ -37,6 +37,10 @@ class IntranetDB {
     return Promise.resolve(fixtures.getProject())
   }
 
+  async getProjects () {
+    return Promise.resolve(fixtures.getProjects())
+  }
+
   async getUser (username) {
     const user = fixtures.getUser()
     if (username !== user.username) {
