@@ -27,6 +27,27 @@ test('No token POST /save', async t => {
   await t.throws(request(options), /invalid token/)
 })
 
+test('Invalid token POST /save', async t => {
+  const office = fixtures.getOffice()
+  const url = t.context.url
+
+  const payload = { username: '' }
+  const token = await utils.signToken(payload, config.secret, {})
+
+  const options = {
+    method: 'POST',
+    uri: `${url}/save`,
+    json: true,
+    body: office,
+    resolveWithFullResponse: true,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }
+
+  await t.throws(request(options), /invalid token/)
+})
+
 test('Secure POST /save', async t => {
   const office = fixtures.getOffice()
   const user = fixtures.getUser()

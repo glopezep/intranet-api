@@ -29,7 +29,11 @@ class IntranetDB {
     return Promise.resolve(fixtures.getOffice())
   }
 
-  async getUser (id) {
+  async getUser (username) {
+    const user = fixtures.getUser()
+    if (username !== user.username) {
+      return Promise.reject(new Error('not found'))
+    }
     return Promise.resolve(fixtures.getUser())
   }
 }
