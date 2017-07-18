@@ -1,5 +1,5 @@
 const { send, json } = require('micro')
-const { router, post, get } = require('microrouter')
+const { router, post, get, put } = require('microrouter')
 const IntranetDB = require('intranet-db')
 const DbStub = require('./test/stub/db')
 
@@ -26,8 +26,16 @@ const getProjects = async function getProjects (req, res) {
   send(res, 200, projects)
 }
 
+const updateProject = async function updateProject (req, res) {
+  const id = req.params.id
+  const data = await json(req)
+  const updated = await db.updateProject(id, data)
+  send(res, 200, updated)
+}
+
 module.exports = router(
   post('/save', saveProject),
   get('/list', getProjects),
-  get('/:id', getProject)
+  get('/:id', getProject),
+  put('/:id', updateProject)
 )
