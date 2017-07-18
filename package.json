@@ -22,8 +22,10 @@
     "uuid": "^3.1.0"
   },
   "dependencies": {
+    "intranet-db": "file://Users/guillermolopez/Desktop/intranet/intranet-db/",
+    "jsonwebtoken": "^7.4.1",
     "micro": "^7.3.3",
     "microrouter": "^2.1.1",
-    "intranet-db": "file://Users/guillermolopez/Desktop/intranet/intranet-db/"
+    "token-extractor": "^0.1.6"
   }
 }

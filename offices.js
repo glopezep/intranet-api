@@ -1,6 +1,8 @@
 const { send, json } = require('micro')
 const { router, get, post, put, del } = require('microrouter')
 const IntranetDB = require('intranet-db')
+const utils = require('./lib/utils')
+const config = require('./config')
 const DbStub = require('./test/stub/db')
 
 let db = new IntranetDB()
@@ -10,9 +12,17 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const saveOffice = async function saveOffice (req, res) {
-  const office = await json(req)
-  const created = await db.saveOffice(office)
-  send(res, 201, created)
+  try {
+    const token = await utils.extractToken(req)
+    const decoded = await utils.verifyToken(token, config.secret, {})
+    const user = await db.getUser(decoded.username)
+    if (decoded && !user) return send(res, 401, 'invalid token')
+    const office = await json(req)
+    const created = await db.saveOffice(office)
+    send(res, 201, created)
+  } catch (e) {
+    return send(res, 401, 'invalid token')
+  }
 }
 
 const getOffice = async function getOffice (req, res) {
@@ -44,7 +54,7 @@ const notFound = async function notFound (req, res) {
 }
 
 module.exports = router(
-  post('/', saveOffice),
+  post('/save', saveOffice),
   get('/list', getOffices),
   get('/:id', getOffice),
   put('/:id', updateOffice),

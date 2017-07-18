@@ -4,22 +4,46 @@ import listen from 'test-listen'
 import request from 'request-promise-native'
 import fixtures from './fixtures'
 import offices from '../offices'
+import utils from '../lib/utils'
+import config from '../config'
 
 test.beforeEach(async t => {
   const srv = micro(offices)
   t.context.url = await listen(srv)
 })
 
-test('POST /save', async t => {
+test('No token POST /save', async t => {
   const office = fixtures.getOffice()
   const url = t.context.url
 
   const options = {
     method: 'POST',
-    uri: url,
+    uri: `${url}/save`,
     json: true,
     body: office,
     resolveWithFullResponse: true
+  }
+
+  await t.throws(request(options), /invalid token/)
+})
+
+test('Secure POST /save', async t => {
+  const office = fixtures.getOffice()
+  const user = fixtures.getUser()
+  const url = t.context.url
+
+  const payload = { username: user.username }
+  const token = await utils.signToken(payload, config.secret, {})
+
+  const options = {
+    method: 'POST',
+    uri: `${url}/save`,
+    json: true,
+    body: office,
+    resolveWithFullResponse: true,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
   }
 
   const response = await request(options)

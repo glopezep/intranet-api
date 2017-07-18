@@ -28,6 +28,10 @@ class IntranetDB {
   async deleteOffice (id) {
     return Promise.resolve(fixtures.getOffice())
   }
+
+  async getUser (id) {
+    return Promise.resolve(fixtures.getUser())
+  }
 }
 
 module.exports = IntranetDB
