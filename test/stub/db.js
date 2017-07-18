@@ -21,6 +21,10 @@ class IntranetDB {
     return Promise.resolve(fixtures.getOffices())
   }
 
+  async updateOffice (id) {
+    return Promise.resolve(fixtures.getOffice())
+  }
+
   async deleteOffice (id) {
     return Promise.resolve(fixtures.getOffice())
   }
