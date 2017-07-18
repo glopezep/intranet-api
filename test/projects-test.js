@@ -79,3 +79,20 @@ test('PUT /:id', async t => {
   t.is(response.statusCode, 200)
   t.deepEqual(response.body, project)
 })
+
+test('DELETE /:id', async t => {
+  const project = fixtures.getProject()
+  const url = t.context.url
+
+  const options = {
+    method: 'DELETE',
+    uri: `${url}/${project.id}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, project)
+})
