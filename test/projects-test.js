@@ -27,3 +27,20 @@ test('POST /save', async t => {
   t.is(response.statusCode, 201)
   t.deepEqual(response.body, project)
 })
+
+test('GET /:id', async t => {
+  const project = fixtures.getProject()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/${project.id}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, project)
+})
