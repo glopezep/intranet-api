@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Pawa Dominicana",
   "license": "ISC",
+  "scripts": {
+    "test": "NODE_ENV=test ava ./test/*-test.js"
+  },
   "devDependencies": {
     "ava": "^0.21.0",
     "eslint": "^4.2.0",
@@ -15,10 +18,12 @@
     "eslint-plugin-standard": "^3.0.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
-    "test-listen": "^1.0.2"
+    "test-listen": "^1.0.2",
+    "uuid": "^3.1.0"
   },
   "dependencies": {
     "micro": "^7.3.3",
-    "microrouter": "^2.1.1"
+    "microrouter": "^2.1.1",
+    "intranet-db": "file://Users/guillermolopez/Desktop/intranet/intranet-db/"
   }
 }
