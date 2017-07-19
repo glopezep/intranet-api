@@ -1,75 +1,75 @@
 const fixtures = require('../fixtures')
 
 class IntranetDB {
-  async setup () {
+  setup () {
     return Promise.resolve(true)
   }
 
-  async drop () {
+  drop () {
     return Promise.resolve(true)
   }
 
-  async saveOffice (office) {
+  saveOffice (office) {
     return Promise.resolve(office)
   }
 
-  async getOffice (id) {
+  getOffice (id) {
     return Promise.resolve(fixtures.getOffice())
   }
 
-  async getOffices () {
+  getOffices () {
     return Promise.resolve(fixtures.getOffices())
   }
 
-  async updateOffice (id) {
+  updateOffice (id) {
     return Promise.resolve(fixtures.getOffice())
   }
 
-  async deleteOffice (id) {
+  deleteOffice (id) {
     return Promise.resolve(fixtures.getOffice())
   }
 
-  async saveProjectCategory (projectCategory) {
+  saveProjectCategory (projectCategory) {
     return Promise.resolve(fixtures.getProjectCategory())
   }
 
-  async updateProjectCategory (id) {
+  updateProjectCategory (id) {
     return Promise.resolve(fixtures.getProjectCategory())
   }
 
-  async deleteProjectCategory (id) {
+  deleteProjectCategory (id) {
     return Promise.resolve(fixtures.getProjectCategory())
   }
 
-  async saveProject (project) {
+  saveProject (project) {
     return Promise.resolve(fixtures.getProject())
   }
 
-  async getProject (id) {
+  getProject (id) {
     return Promise.resolve(fixtures.getProject())
   }
 
-  async getProjects () {
+  getProjects () {
     return Promise.resolve(fixtures.getProjects())
   }
 
-  async getProjectsByProjectCategory (id) {
+  getProjectsByProjectCategory (id) {
     return Promise.resolve(fixtures.getProjects())
   }
 
-  async updateProject (id) {
+  updateProject (id) {
     return Promise.resolve(fixtures.getProject())
   }
 
-  async deleteProject (id) {
+  deleteProject (id) {
     return Promise.resolve(fixtures.getProject())
   }
 
-  async saveUser (user) {
+  saveUser (user) {
     return Promise.resolve(fixtures.getUser())
   }
 
-  async getUser (username) {
+  getUser (username) {
     const user = fixtures.getUser()
     if (username !== user.username) {
       return Promise.reject(new Error('not found'))
@@ -77,20 +77,24 @@ class IntranetDB {
     return Promise.resolve(fixtures.getUser())
   }
 
-  async getUsers () {
+  getUsers () {
     return Promise.resolve(fixtures.getUsers())
   }
 
-  async getUsersByOffice (id) {
+  getUsersByOffice (id) {
     return Promise.resolve(fixtures.getUsers())
   }
 
-  async updateUser (username) {
+  updateUser (username) {
     return Promise.resolve(fixtures.getUser())
   }
 
-  async deleteUser (username) {
+  deleteUser (username) {
     return Promise.resolve(fixtures.getUser())
+  }
+
+  authenticate (username, password) {
+    return Promise.resolve(true)
   }
 }
 
