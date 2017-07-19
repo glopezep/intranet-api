@@ -80,5 +80,22 @@ test('GET /office/:id/users', async t => {
   t.deepEqual(response.body, users)
 })
 
-test.todo('PUT /:id')
+test('PUT /:username', async t => {
+  const user = fixtures.getUser()
+  const url = t.context.url
+
+  const options = {
+    method: 'PUT',
+    uri: `${url}/${user.username}`,
+    json: true,
+    body: user,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 201)
+  t.deepEqual(response.body, user)
+})
+
 test.todo('DELETE /:id')

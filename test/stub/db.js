@@ -84,6 +84,10 @@ class IntranetDB {
   async getUsersByOffice (id) {
     return Promise.resolve(fixtures.getUsers())
   }
+
+  async updateUser (id) {
+    return Promise.resolve(fixtures.getUser())
+  }
 }
 
 module.exports = IntranetDB

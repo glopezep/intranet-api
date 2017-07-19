@@ -1,5 +1,5 @@
 const { send, json } = require('micro')
-const { router, post, get } = require('microrouter')
+const { router, post, get, put } = require('microrouter')
 const IntranetDB = require('intranet-db')
 const DbStub = require('./test/stub/db')
 
@@ -32,9 +32,18 @@ async function getUsersByOffice (req, res) {
   send(res, 200, result)
 }
 
+async function updateUser (req, res) {
+  const username = req.params.username
+  const data = await json(req)
+  const result = await db.updateUser(username, data)
+  send(res, 201, result)
+}
+
 module.exports = router(
   get('/office/:id/users', getUsersByOffice),
   post('/save', saveUser),
   get('/list', getUsers),
-  get('/:username', getUser)
+  get('/:username', getUser),
+  put('/:username', updateUser)
+
 )
