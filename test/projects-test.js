@@ -132,3 +132,21 @@ test('GET /category/:id/projects', async t => {
   t.is(response.statusCode, 200)
   t.deepEqual(response.body, projects)
 })
+
+test('PUT /category/:id', async t => {
+  const projectCategory = fixtures.getProjectCategory()
+  const url = t.context.url
+
+  const options = {
+    method: 'PUT',
+    uri: `${url}/category/${projectCategory.id}`,
+    json: true,
+    body: projectCategory,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, projectCategory)
+})

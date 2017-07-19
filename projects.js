@@ -51,9 +51,17 @@ const saveProjectCategory = async function saveProjectCategory (req, res) {
   send(res, 201, created)
 }
 
+const updateProjectCategory = async function updateProjectCategory (req, res) {
+  const id = req.params.id
+  const data = await json(req)
+  const updated = await db.updateProjectCategory(id, data)
+  send(res, 200, updated)
+}
+
 module.exports = router(
   post('/category/save', saveProjectCategory),
   get('/category/:id/projects', getProjectsByProjectCategory),
+  put('/category/:id', updateProjectCategory),
   post('/save', saveProject),
   get('/list', getProjects),
   get('/:id', getProject),
