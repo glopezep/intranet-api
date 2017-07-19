@@ -28,8 +28,24 @@ test('POST /save', async t => {
   t.deepEqual(response.body, user)
 })
 
+test('GET /:username', async t => {
+  const user = fixtures.getUser()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/${user.username}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, user)
+})
+
 test.todo('GET /list')
 test.todo('GET /office/:id/users')
-test.todo('GET /:id')
 test.todo('PUT /:id')
 test.todo('DELETE /:id')

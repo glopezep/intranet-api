@@ -41,7 +41,7 @@ function getUser () {
   return {
     id: '8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
     fullname: `Jhon Doe 8bdafc78-5090-4b91-ab22-d0b3ef3fabf8`,
-    username: `jhondoe-8bdafc78-5090-4b91-ab22-d0b3ef3fabf8}`,
+    username: `jhondoe-8bdafc78-5090-4b91-ab22-d0b3ef3fabf8`,
     password: 'password123456',
     extensionNumber: 1234,
     email: `jhondoe8bdafc78-5090-4b91-ab22-d0b3ef3fabf8@test.com`
