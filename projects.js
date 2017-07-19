@@ -9,59 +9,63 @@ if (process.env.NODE_ENV !== 'production') {
   db = new DbStub()
 }
 
-const saveProject = async function saveProject (req, res) {
+async function saveProject (req, res) {
   const project = await json(req)
   const created = await db.saveProject(project)
   send(res, 201, created)
 }
 
-const getProject = async function getProject (req, res) {
+async function getProject (req, res) {
   const id = req.params.id
   const project = await db.getProject(id)
   send(res, 200, project)
 }
 
-const getProjects = async function getProjects (req, res) {
+async function getProjects (req, res) {
   const projects = await db.getProjects()
   send(res, 200, projects)
 }
 
-const getProjectsByProjectCategory = async function getProjectsByProjectCategory (req, res) {
+async function getProjectsByProjectCategory (req, res) {
   const id = req.params.id
   const projects = await db.getProjectsByProjectCategory(id)
   send(res, 200, projects)
 }
 
-const updateProject = async function updateProject (req, res) {
+async function updateProject (req, res) {
   const id = req.params.id
   const data = await json(req)
   const updated = await db.updateProject(id, data)
   send(res, 200, updated)
 }
 
-const deletetProject = async function deleteProject (req, res) {
+async function deleteProject (req, res) {
   const id = req.params.id
   const project = await db.deleteProject(id)
   send(res, 200, project)
 }
 
-const saveProjectCategory = async function saveProjectCategory (req, res) {
+async function saveProjectCategory (req, res) {
   const projectCategory = await json(req)
   const created = await db.saveProjectCategory(projectCategory)
   send(res, 201, created)
 }
 
-const updateProjectCategory = async function updateProjectCategory (req, res) {
+async function updateProjectCategory (req, res) {
   const id = req.params.id
   const data = await json(req)
   const updated = await db.updateProjectCategory(id, data)
   send(res, 200, updated)
 }
 
-const deleteProjectCategory = async function deleteProjectCategory (req, res) {
+async function deleteProjectCategory (req, res) {
   const id = req.params.id
   const result = await db.deleteProjectCategory(id)
   send(res, 200, result)
+}
+
+async function notFound (req, res) {
+  send(res, 404, 'Not Found')
 }
 
 module.exports = router(
@@ -73,5 +77,6 @@ module.exports = router(
   get('/list', getProjects),
   get('/:id', getProject),
   put('/:id', updateProject),
-  del('/:id', deletetProject)
+  del('/:id', deleteProject),
+  get('/*', notFound)
 )

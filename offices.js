@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
   db = new DbStub()
 }
 
-const saveOffice = async function saveOffice (req, res) {
+async function saveOffice (req, res) {
   try {
     const token = await utils.extractToken(req)
     const decoded = await utils.verifyToken(token, config.secret, {})
@@ -25,7 +25,7 @@ const saveOffice = async function saveOffice (req, res) {
   }
 }
 
-const getOffice = async function getOffice (req, res) {
+async function getOffice (req, res) {
   const id = req.params.id
   const office = await db.getOffice(id)
   send(res, 200, office)
@@ -36,20 +36,20 @@ const getOffices = async function getOffices (req, res) {
   send(res, 200, offices)
 }
 
-const updateOffice = async function updateOffice (req, res) {
+async function updateOffice (req, res) {
   const id = req.params.id
   const data = await json(req)
   const office = await db.updateOffice(id, data)
   send(res, 200, office)
 }
 
-const deleteOffice = async function deleteOffice (req, res) {
+async function deleteOffice (req, res) {
   const id = req.params.id
   const office = await db.deleteOffice(id)
   send(res, 200, office)
 }
 
-const notFound = async function notFound (req, res) {
+async function notFound (req, res) {
   send(res, 404, 'Not Found')
 }
 
