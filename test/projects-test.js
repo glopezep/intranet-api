@@ -115,14 +115,14 @@ test('POST /category/save', async t => {
   t.deepEqual(response.body, productCategory)
 })
 
-test('GET /category/:id/list', async t => {
+test('GET /category/:id/projects', async t => {
   const projects = fixtures.getProjects()
   const id = projects[0].projectCategoryId
   const url = t.context.url
 
   const options = {
     method: 'GET',
-    uri: `${url}/category/${id}/list`,
+    uri: `${url}/category/${id}/projects`,
     json: true,
     resolveWithFullResponse: true
   }

@@ -52,10 +52,10 @@ const saveProjectCategory = async function saveProjectCategory (req, res) {
 }
 
 module.exports = router(
-  post('/save', saveProject),
   post('/category/save', saveProjectCategory),
+  get('/category/:id/projects', getProjectsByProjectCategory),
+  post('/save', saveProject),
   get('/list', getProjects),
-  get('/category/:id/list', getProjectsByProjectCategory),
   get('/:id', getProject),
   put('/:id', updateProject),
   del('/:id', deletetProject)
