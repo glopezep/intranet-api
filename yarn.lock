@@ -1771,8 +1771,8 @@ inquirer@^3.0.6:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-"intranet-db@file://Users/guillermolopez/Desktop/intranet/intranet-db/":
-  version "0.40.0"
+"intranet-db@file://Users/guillermo/Desktop/pawa/intranet/intranet-db/":
+  version "0.0.1"
   dependencies:
     pg "^6.4.1"
     pg-hstore "^2.3.2"

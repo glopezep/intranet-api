@@ -45,6 +45,24 @@ test('GET /:id', async t => {
   t.deepEqual(response.body, project)
 })
 
+test('GET /category/:id/list', async t => {
+  const projects = fixtures.getProjects()
+  const id = projects[0].projectCategoryId
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/category/${id}/list`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, projects)
+})
+
 test('GET /list', async t => {
   const projects = fixtures.getProjects()
   const url = t.context.url

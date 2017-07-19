@@ -23,7 +23,7 @@
     "uuid": "^3.1.0"
   },
   "dependencies": {
-    "intranet-db": "file://Users/guillermolopez/Desktop/intranet/intranet-db/",
+    "intranet-db": "file://Users/guillermo/Desktop/pawa/intranet/intranet-db/",
     "jsonwebtoken": "^7.4.1",
     "micro": "^7.3.3",
     "microrouter": "^2.1.1",

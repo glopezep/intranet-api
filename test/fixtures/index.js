@@ -6,7 +6,8 @@ function getProject () {
     name: 'Lorem 8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing',
     imageURL: 'http://intranet.test/uploads/8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
-    extURL: 'http://extlink.test/'
+    extURL: 'http://extlink.test/',
+    projectCategoryId: '8bdafc78-5090-4b91-ab22-d0b3ef3fabf8'
   }
 }
 
