@@ -26,7 +26,14 @@ async function getUsers (req, res) {
   send(res, 200, result)
 }
 
+async function getUsersByOffice (req, res) {
+  const id = req.params.id
+  const result = await db.getUsersByOffice(id)
+  send(res, 200, result)
+}
+
 module.exports = router(
+  get('/office/:id/users', getUsersByOffice),
   post('/save', saveUser),
   get('/list', getUsers),
   get('/:username', getUser)

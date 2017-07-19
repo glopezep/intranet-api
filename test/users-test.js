@@ -62,6 +62,23 @@ test('GET /list', async t => {
   t.deepEqual(response.body, users)
 })
 
-test.todo('GET /office/:id/users')
+test('GET /office/:id/users', async t => {
+  const office = fixtures.getOffice()
+  const users = fixtures.getUsers()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/office/${office.id}/users`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, users)
+})
+
 test.todo('PUT /:id')
 test.todo('DELETE /:id')
