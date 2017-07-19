@@ -21,7 +21,13 @@ async function getUser (req, res) {
   send(res, 200, result)
 }
 
+async function getUsers (req, res) {
+  const result = await db.getUsers()
+  send(res, 200, result)
+}
+
 module.exports = router(
   post('/save', saveUser),
+  get('/list', getUsers),
   get('/:username', getUser)
 )

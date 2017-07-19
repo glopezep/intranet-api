@@ -125,6 +125,14 @@ function getDocuments () {
   ]
 }
 
+function getUsers () {
+  return [
+    getUser(),
+    getUser(),
+    getUser()
+  ]
+}
+
 module.exports = {
   getProjectCategory,
   getProject,
@@ -139,5 +147,6 @@ module.exports = {
   getPositions,
   getDocumentCategories,
   getDepartments,
-  getDocuments
+  getDocuments,
+  getUsers
 }
