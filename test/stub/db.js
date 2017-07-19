@@ -85,7 +85,11 @@ class IntranetDB {
     return Promise.resolve(fixtures.getUsers())
   }
 
-  async updateUser (id) {
+  async updateUser (username) {
+    return Promise.resolve(fixtures.getUser())
+  }
+
+  async deleteUser (username) {
     return Promise.resolve(fixtures.getUser())
   }
 }

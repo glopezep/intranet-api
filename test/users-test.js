@@ -98,4 +98,19 @@ test('PUT /:username', async t => {
   t.deepEqual(response.body, user)
 })
 
-test.todo('DELETE /:id')
+test('DELETE /:username', async t => {
+  const user = fixtures.getUser()
+  const url = t.context.url
+
+  const options = {
+    method: 'DELETE',
+    uri: `${url}/${user.username}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, user)
+})
