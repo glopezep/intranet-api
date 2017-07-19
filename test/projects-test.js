@@ -150,3 +150,21 @@ test('PUT /category/:id', async t => {
   t.is(response.statusCode, 200)
   t.deepEqual(response.body, projectCategory)
 })
+
+test('DELETE /category/:id', async t => {
+  const projectCategory = fixtures.getProjectCategory()
+  const url = t.context.url
+
+  const options = {
+    method: 'DELETE',
+    uri: `${url}/category/${projectCategory.id}`,
+    json: true,
+    body: projectCategory,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, projectCategory)
+})

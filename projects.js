@@ -58,10 +58,17 @@ const updateProjectCategory = async function updateProjectCategory (req, res) {
   send(res, 200, updated)
 }
 
+const deleteProjectCategory = async function deleteProjectCategory (req, res) {
+  const id = req.params.id
+  const result = await db.deleteProjectCategory(id)
+  send(res, 200, result)
+}
+
 module.exports = router(
   post('/category/save', saveProjectCategory),
   get('/category/:id/projects', getProjectsByProjectCategory),
   put('/category/:id', updateProjectCategory),
+  del('/category/:id', deleteProjectCategory),
   post('/save', saveProject),
   get('/list', getProjects),
   get('/:id', getProject),
