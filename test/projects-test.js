@@ -45,24 +45,6 @@ test('GET /:id', async t => {
   t.deepEqual(response.body, project)
 })
 
-test('GET /category/:id/list', async t => {
-  const projects = fixtures.getProjects()
-  const id = projects[0].projectCategoryId
-  const url = t.context.url
-
-  const options = {
-    method: 'GET',
-    uri: `${url}/category/${id}/list`,
-    json: true,
-    resolveWithFullResponse: true
-  }
-
-  const response = await request(options)
-
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, projects)
-})
-
 test('GET /list', async t => {
   const projects = fixtures.getProjects()
   const url = t.context.url
@@ -113,4 +95,40 @@ test('DELETE /:id', async t => {
 
   t.is(response.statusCode, 200)
   t.deepEqual(response.body, project)
+})
+
+test('POST /category/save', async t => {
+  const productCategory = fixtures.getProjectCategory()
+  const url = t.context.url
+
+  const options = {
+    method: 'POST',
+    uri: `${url}/category/save`,
+    json: true,
+    body: productCategory,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 201)
+  t.deepEqual(response.body, productCategory)
+})
+
+test('GET /category/:id/list', async t => {
+  const projects = fixtures.getProjects()
+  const id = projects[0].projectCategoryId
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/category/${id}/list`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, projects)
 })

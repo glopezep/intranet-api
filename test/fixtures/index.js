@@ -1,5 +1,13 @@
 const uuid = require('uuid/v4')
 
+function getProjectCategory () {
+  return {
+    id: '8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
+    name: 'ProjectCategory 8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing'
+  }
+}
+
 function getProject () {
   return {
     id: '8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
@@ -118,6 +126,7 @@ function getDocuments () {
 }
 
 module.exports = {
+  getProjectCategory,
   getProject,
   getOffice,
   getPosition,
