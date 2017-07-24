@@ -133,6 +133,40 @@ test('GET /category/:id/projects', async t => {
   t.deepEqual(response.body, projects)
 })
 
+test('GET /category/:id', async t => {
+  const projectCategory = fixtures.getProjectCategory()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/category/${projectCategory.id}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, projectCategory)
+})
+
+test('GET /category/list', async t => {
+  const projectCategories = fixtures.getProjectCategories()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/category/list`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, projectCategories)
+})
+
 test('PUT /category/:id', async t => {
   const projectCategory = fixtures.getProjectCategory()
   const url = t.context.url

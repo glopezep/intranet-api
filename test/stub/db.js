@@ -33,6 +33,14 @@ class IntranetDB {
     return Promise.resolve(fixtures.getProjectCategory())
   }
 
+  getProjectCategory (id) {
+    return Promise.resolve(fixtures.getProjectCategory())
+  }
+
+  getProjectCategories () {
+    return Promise.resolve(fixtures.getProjectCategories())
+  }
+
   updateProjectCategory (id) {
     return Promise.resolve(fixtures.getProjectCategory())
   }

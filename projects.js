@@ -45,6 +45,17 @@ async function deleteProject (req, res) {
   send(res, 200, project)
 }
 
+async function getProjectCategory (req, res) {
+  const id = req.params.id
+  const result = await db.getProjectCategory(id)
+  send(res, 200, result)
+}
+
+async function getProjectCategories (req, res) {
+  const result = await db.getProjectCategories()
+  send(res, 200, result)
+}
+
 async function saveProjectCategory (req, res) {
   const projectCategory = await json(req)
   const created = await db.saveProjectCategory(projectCategory)
@@ -70,6 +81,8 @@ async function notFound (req, res) {
 
 module.exports = router(
   post('/category/save', saveProjectCategory),
+  get('/category/list', getProjectCategories),
+  get('/category/:id', getProjectCategory),
   get('/category/:id/projects', getProjectsByProjectCategory),
   put('/category/:id', updateProjectCategory),
   del('/category/:id', deleteProjectCategory),
