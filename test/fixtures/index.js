@@ -29,10 +29,9 @@ function getOffice () {
 }
 
 function getPosition () {
-  const id = uuid()
   return {
-    id,
-    name: `Position ${id}`,
+    id: '8bdafc78-5090-4b91-ab22-d0b3ef3fabf8',
+    name: `Position 8bdafc78-5090-4b91-ab22-d0b3ef3fabf8`,
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing'
   }
 }

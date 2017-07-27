@@ -9,6 +9,12 @@ if (process.env.NODE_ENV !== 'production') {
   db = new DbStub()
 }
 
+async function savePosition (req, res) {
+  const position = await json(req)
+  const result = await db.savePosition(position)
+  send(res, 201, result)
+}
+
 async function saveUser (req, res) {
   const user = await json(req)
   const result = await db.saveUser(user)
@@ -46,6 +52,7 @@ async function deleteUser (req, res) {
 }
 
 module.exports = router(
+  post('/position/save', savePosition),
   get('/office/:id/users', getUsersByOffice),
   post('/save', saveUser),
   get('/list', getUsers),

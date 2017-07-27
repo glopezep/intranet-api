@@ -73,6 +73,26 @@ class IntranetDB {
     return Promise.resolve(fixtures.getProject())
   }
 
+  savePosition (position) {
+    return Promise.resolve(fixtures.getPosition())
+  }
+
+  getPosition (id) {
+    return Promise.resolve(fixtures.getPosition())
+  }
+
+  getPositions () {
+    return Promise.resolve(fixtures.getPositions())
+  }
+
+  updatePosition (id) {
+    return Promise.resolve(fixtures.getPosition())
+  }
+
+  deletePosition (id) {
+    return Promise.resolve(fixtures.getPosition())
+  }
+
   saveUser (user) {
     return Promise.resolve(fixtures.getUser())
   }

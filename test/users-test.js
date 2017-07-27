@@ -10,6 +10,24 @@ test.beforeEach(async t => {
   t.context.url = await listen(srv)
 })
 
+test('POST /position/save', async t => {
+  const position = fixtures.getPosition()
+  const url = t.context.url
+
+  const options = {
+    method: 'POST',
+    uri: `${url}/position/save`,
+    json: true,
+    body: position,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 201)
+  t.deepEqual(response.body, position)
+})
+
 test('POST /save', async t => {
   const user = fixtures.getUser()
   const url = t.context.url
