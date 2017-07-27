@@ -33,6 +33,12 @@ async function updatePosition (req, res) {
   send(res, 200, result)
 }
 
+async function deletePosition (req, res) {
+  const id = req.params.id
+  const result = await db.deletePosition(id)
+  send(res, 200, result)
+}
+
 async function saveUser (req, res) {
   const user = await json(req)
   const result = await db.saveUser(user)
@@ -74,6 +80,7 @@ module.exports = router(
   get('/position/list', getPositions),
   get('/position/:id', getPosition),
   put('/position/:id', updatePosition),
+  del('/position/:id', deletePosition),
   get('/office/:id/users', getUsersByOffice),
   post('/save', saveUser),
   get('/list', getUsers),
