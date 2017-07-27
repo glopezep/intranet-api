@@ -28,6 +28,23 @@ test('POST /position/save', async t => {
   t.deepEqual(response.body, position)
 })
 
+test('GET /position/:id', async t => {
+  const position = fixtures.getPosition()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/position/${position.id}`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, position)
+})
+
 test('POST /save', async t => {
   const user = fixtures.getUser()
   const url = t.context.url

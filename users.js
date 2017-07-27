@@ -15,6 +15,12 @@ async function savePosition (req, res) {
   send(res, 201, result)
 }
 
+async function getPosition (req, res) {
+  const id = req.params.id
+  const result = await db.getPosition(id)
+  send(res, 200, result)
+}
+
 async function saveUser (req, res) {
   const user = await json(req)
   const result = await db.saveUser(user)
@@ -53,6 +59,7 @@ async function deleteUser (req, res) {
 
 module.exports = router(
   post('/position/save', savePosition),
+  get('/position/:id', getPosition),
   get('/office/:id/users', getUsersByOffice),
   post('/save', saveUser),
   get('/list', getUsers),
