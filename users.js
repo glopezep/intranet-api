@@ -26,6 +26,13 @@ async function getPositions (req, res) {
   send(res, 200, result)
 }
 
+async function updatePosition (req, res) {
+  const id = req.params.id
+  const data = await json(req)
+  const result = await db.updatePosition(id, data)
+  send(res, 200, result)
+}
+
 async function saveUser (req, res) {
   const user = await json(req)
   const result = await db.saveUser(user)
@@ -66,6 +73,7 @@ module.exports = router(
   post('/position/save', savePosition),
   get('/position/list', getPositions),
   get('/position/:id', getPosition),
+  put('/position/:id', updatePosition),
   get('/office/:id/users', getUsersByOffice),
   post('/save', saveUser),
   get('/list', getUsers),
